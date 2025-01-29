@@ -1,0 +1,17 @@
+name: Test Build Name
+on: [push]
+
+jobs:
+  tests:
+    strategy:
+      matrix:
+        conf:
+          - name: Foo
+          - name: Bar
+
+    name: ${{ matrix.conf.name }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get job name
+        run: echo "How about ${{ github.jobs[github.job].name }}"
