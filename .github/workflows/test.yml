@@ -1,5 +1,9 @@
 name: Test Build Name
-on: [push]
+on:
+  push:
+    branches: [master]
+  schedule:
+    - cron: "30 * * * *"
 
 jobs:
   tests:
@@ -15,3 +19,6 @@ jobs:
     steps:
       - name: Get job name
         run: echo "How about '${{ github.run-name }}'?"
+
+      - name: Get event name
+        run: echo "Hello from '${{ github.event_name }}'?"
